@@ -25,11 +25,15 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 Cypress.Commands.add('loginToTrello',()=>{
-         cy.visit("/login");
-            cy.get("#username").type("samar-aghbar@hotmail.com");
-            cy.get("#login-submit").click();
-            cy.get("#password").type(("Madsisi@1994")+ "{enter}");
-         });
+    cy.fixture('login-fixture').then((fixture)=>{
+        cy.visit("/login");
+        cy.get("#username").type(fixture.email);
+        cy.get("#username").type("samar-aghbar@hotmail.com");
+        cy.get("#password").type((fixture.password)+ "{enter}");
+
+
+    });        
+    });
 
 
 

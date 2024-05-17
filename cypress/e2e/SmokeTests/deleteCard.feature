@@ -1,9 +1,10 @@
 Feature: Delete Card
 
 Scenario: Validate the user can delete card
-Given  The user clicks on card activites
-When The user clicks on archive
-Then The Card is deleted
+Given Open Board
+When Choose needed card
+And  Click on archive card
+Then Card is successfully deleted
 
 
     Feature Description

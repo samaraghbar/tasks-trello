@@ -2,19 +2,22 @@
 import { Given, Then, When, Before, After} from "cypress-cucumber-preprocessor/steps";
 import { APIKey, APIToken } from "../../../support/constants.cy";
 import sharedDataUtils from "../../../pageObjects/createCard/dataUtils.cy";
-import DeleteCardActions from "../../../pageObjects/deleteCard/actions.cy";
-import DeleteCardAssertions from "../../../pageObjects/deleteCard/assertions.cy";
+import CreateTemplateActions from "../../../pageObjects/createTemplate/actions.cy";
+import CreateTemplateAssertions from "../../../pageObjects/createTemplate/assertions.cy";
 
+const CreateTemplateAction = new CreateTemplateActions();
+const CreateTemplateAssertion = new CreateTemplateAssertions();
 
 
 const cardTitle = "Samar Card"; 
 const boardName = "My Board";
 let boardUrl, boardId;
-let listId, cardId ;
+let listId, cardUrl, cardId;
+let TempId;
 const listName = "My To-Do"
 const DataUtils = new sharedDataUtils;
-const DeleteCardAction = new DeleteCardActions;
-const DeleteCardAssertion = new DeleteCardAssertions;
+const tempName = "Card Template"
+
 
 Before(()=>{
 
@@ -27,35 +30,30 @@ Before(()=>{
     listId= resp.body[0].id;
 
 
-    DataUtils.createCard(listId,cardTitle)
-    cardId = resp.body.id;
-   });
+    DataUtils.createCard(listId,cardTitle);
 });
+    });
 
 cy.loginToTrello();
 
 });
 
 
-Given("Open Board",()=>{
-DeleteCardAction. openBoard(boardUrl);
+Given("Open the needed board",()=>{
+    CreateTemplateAction.openBoard(boardUrl);
 
 });
 
-When("Choose needed card",()=>{
-DeleteCardAction.chooseCard();
+
+When("Click on create template icon",()=>{
+    DataUtils.createTemplate(listId,cardTitle,isTemplate);
+});
+
+Then("The template is created successfully",()=>{
+CreateTemplateAssertion.templateNameisVisible(isTemplate);
 
 });
 
-When("Click on archive card",()=>{
- DataUtils.deleteCard(cardId);
-});
-
-
-Then("Card is successfully deleted",()=>{
-DeleteCardAssertion.cardIsDeleted(cardTitle);
-
-});
 
 After(()=>{
 

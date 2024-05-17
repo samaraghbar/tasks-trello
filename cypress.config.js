@@ -16,6 +16,13 @@ module.exports = defineConfig({
 
       on("file:preprocessor", cucumber());
         },
+
+        watchForFileChanges:true,
+        screenshotOnRunFailure:true,
+        screenshotsFolder:"MyScreenShots",
+        trashAssetsBeforeRuns:true, 
+
   },
 
+ 
 });

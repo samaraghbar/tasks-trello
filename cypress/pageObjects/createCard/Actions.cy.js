@@ -25,5 +25,12 @@ clickOnAddCardButton(){
 return this;
 };
 
+openCard(cardUrl){
+cy.visit(cardUrl);
+return this;
+ };
+
+
+
 };
 export default CreateCardActions;
