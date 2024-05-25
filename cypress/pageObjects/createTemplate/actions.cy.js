@@ -5,7 +5,20 @@ class CreateTemplateActions{
       return this;
     };
 
+    ChooseCard(){
+      cy.findbyTestId("card-name").click();
+      return this;
+    };
     
+    makeTemplateOption(){
+      cy.get('.action-text').contains("Make template").click();
+      return this;
+    };
+
+    closeTheCardListOption(){
+      cy.findbyTestId("CloseIcon").click();
+      return this;
+    };
 
 };
 

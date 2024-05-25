@@ -7,14 +7,14 @@ import DeleteCardAssertions from "../../../pageObjects/deleteCard/assertions.cy"
 
 
 
-const cardTitle = "Samar Card"; 
-const boardName = "My Board";
+const cardTitle ="Samar Card"; 
+const boardName ="My Board";
 let boardUrl, boardId;
 let listId, cardId ;
-const listName = "My To-Do"
-const DataUtils = new sharedDataUtils;
-const DeleteCardAction = new DeleteCardActions;
-const DeleteCardAssertion = new DeleteCardAssertions;
+const listName ="My To-Do"
+const DataUtils =new sharedDataUtils;
+const DeleteCardAction =new DeleteCardActions;
+const DeleteCardAssertion =new DeleteCardAssertions;
 
 Before(()=>{
 
@@ -24,7 +24,7 @@ Before(()=>{
     boardId =resp.body.id;
 
    DataUtils.createList(boardId,listName).then((resp)=>{
-    listId= resp.body[0].id;
+    listId = resp.body[0].id;
 
 
     DataUtils.createCard(listId,cardTitle)
@@ -38,7 +38,7 @@ cy.loginToTrello();
 
 
 Given("Open Board",()=>{
-DeleteCardAction. openBoard(boardUrl);
+DeleteCardAction.openBoard(boardUrl);
 
 });
 
@@ -48,7 +48,8 @@ DeleteCardAction.chooseCard();
 });
 
 When("Click on archive card",()=>{
- DataUtils.deleteCard(cardId);
+DeleteCardAction.clickOnArchiveButton()
+DeleteCardAction.clickOnDelete()
 });
 
 

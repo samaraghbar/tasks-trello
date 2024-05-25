@@ -45,13 +45,19 @@ Given("Open the needed board",()=>{
 });
 
 
+When("Choose the card",()=>{
+    CreateTemplateAction.ChooseCard();
+});
+
 When("Click on create template icon",()=>{
-    DataUtils.createTemplate(listId,cardTitle,isTemplate);
+CreateTemplateAction.makeTemplateOption();
+
 });
 
 Then("The template is created successfully",()=>{
-CreateTemplateAssertion.templateNameisVisible(isTemplate);
-
+CreateTemplateAssertion.templateNameisVisible();
+CreateTemplateAction.closeTheCardListOption();
+CreateTemplateAssertion.thisCardIsATemplate();
 });
 
 

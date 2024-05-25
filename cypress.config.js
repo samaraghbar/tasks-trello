@@ -19,8 +19,9 @@ module.exports = defineConfig({
 
         watchForFileChanges:true,
         screenshotOnRunFailure:true,
-        screenshotsFolder:"MyScreenShots",
         trashAssetsBeforeRuns:true, 
+        screenshotsFolder:"ScreenShots",
+      
 
   },
 

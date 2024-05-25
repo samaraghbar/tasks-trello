@@ -24,11 +24,6 @@ createCard=(listId)=>{
     return cy.request("Post",`https://api.trello.com/1/cards?idList=${listId}&key=${APIKey}&token=${APIToken}`);
 };
 
-
-deleteCard = (cardId)=>{
-return cy.request("Delete",`https://api.trello.com/1/cards/${cardId}?key=${APIKey}&token=${APIToken}`);
-};
-
 createTemplate(listId,cardTitle,isTemplate){
     return cy.request({
         method: "POST",
@@ -38,6 +33,7 @@ createTemplate(listId,cardTitle,isTemplate){
 });
 
 };
+
 };
 
 export default sharedDataUtils;

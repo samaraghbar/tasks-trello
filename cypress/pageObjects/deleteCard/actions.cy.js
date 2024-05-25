@@ -19,6 +19,11 @@ class DeleteCardActions{
         return this;
     };
 
+clickOnDelete(){
+cy.get('.action-text').contains("Delete").click();
+cy.get('.nch-button--danger').contains("Delete").click();
+return this;
+};
 
 
 

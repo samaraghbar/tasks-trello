@@ -29,8 +29,9 @@ Before(()=>{
     listId= resp.body[0].id;
 
 
-    DataUtils.createCard(listId,cardTitle);
+    DataUtils.createTemplate(listId,cardTitle,isTemplate);
 });
+
     });
 
 cy.loginToTrello();
